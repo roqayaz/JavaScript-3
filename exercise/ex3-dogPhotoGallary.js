@@ -1,5 +1,4 @@
-
-
+//Grab the elements
 const url = 'https://dog.ceo/api/breeds/image/random';
 const xmlBtn = document.getElementById('xmlBtn');
 const axiosBtn = document.getElementById('axiosBtn');
@@ -7,7 +6,7 @@ const ul = document.getElementById('ul');
 ul.style.display = 'flex';
 ul.style.justifyContent = 'space-around';
 
-
+// XHR function
 function requestWithXHR() {
   const xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
@@ -47,8 +46,7 @@ function requestWithXHR() {
   };
 }
 
-
-
+//axios function
 function requestWithAxios(){
   axios.get(url)
   .then(function (response) {
@@ -70,6 +68,6 @@ function requestWithAxios(){
   });
 };
 
-
+//Event listener
 xmlBtn.addEventListener('click',requestWithXHR);
 axiosBtn.addEventListener('click',requestWithAxios);

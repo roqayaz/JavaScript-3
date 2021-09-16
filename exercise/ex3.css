@@ -7,6 +7,8 @@
     box-sizing: border-box;
 }
 
+/* linear gradient. first % start at, second % finish at */ 
+
 body:before {
 	content:"";
 	position:fixed;
@@ -20,10 +22,7 @@ body:before {
 }
 
 body {
-    
-    font-family: 'MedievalSharp', cursive, 'Times New Roman', Times, serif;
-    
-    
+    font-family: 'MedievalSharp', cursive, 'Times New Roman', Times, serif;  
 }
 
 header {
@@ -44,7 +43,7 @@ header {
     padding: 10px;
     height: 80%;
     text-align: center;
-  }
+}
 
 .buttons {
     display: flex;
