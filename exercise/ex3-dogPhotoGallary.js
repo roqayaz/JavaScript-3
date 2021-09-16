@@ -26,8 +26,6 @@ function requestWithXHR() {
       li.style.listStyle = 'none';
       img.setAttribute('style', ' width: 400px;height: 300px; object-fit: cover; margin-top: 15px  ')
       img.src = response.message;
-      
-      
       li.appendChild(img);
       ul.appendChild(li);
     }
