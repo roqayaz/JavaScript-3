@@ -7,9 +7,22 @@
     box-sizing: border-box;
 }
 
+body:before {
+	content:"";
+	position:fixed;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	z-index:-1; 
+	background:#DDFFBC;
+	background: linear-gradient(to bottom, #DDFFBC 30%, #52734D 30% 80%, #DDFFBC 80%) ;
+}
+
 body {
-    background-color: #DDFFBC;  
+    
     font-family: 'MedievalSharp', cursive, 'Times New Roman', Times, serif;
+    
     
 }
 
@@ -17,6 +30,7 @@ header {
     color: #FEFFDE;
     font-size: 2rem;
     font-weight: bold;
+    margin-top: 5px;
 }
 
 #container {
@@ -28,7 +42,7 @@ header {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     padding: 10px;
-    height: 70%;
+    height: 80%;
     text-align: center;
   }
 

@@ -1,21 +1,19 @@
-const URL = 'https://dog.ceo/api/breeds/image/random';
+
+
+const url = 'https://dog.ceo/api/breeds/image/random';
 const xmlBtn = document.getElementById('xmlBtn');
 const axiosBtn = document.getElementById('axiosBtn');
-const ulElm = document.getElementById('list');
-const imgSize = '300px';
-ulElm.style.display = 'flex';
-ulElm.style.flexWrap = 'wrap';
-
-xmlBtn.addEventListener('click',requestWithXHR);
-axiosBtn.addEventListener('click',requestWithAxios);
+const ul = document.getElementById('ul');
+ul.style.display = 'flex';
+ul.style.justifyContent = 'space-around';
 
 
 function requestWithXHR() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', URL, true);
+  xhr.open('GET', url, true);
   xhr.send();
 
-  // 4. This will be called after the response is received
+  // This will be called after the response is received
   xhr.onload = function() {
     if (xhr.status != 200 && xhr.status != 200) {
       // analyze HTTP status of the response
@@ -23,16 +21,16 @@ function requestWithXHR() {
     } else {
       // show the result
       const response = JSON.parse(xhr.responseText);
-      const liElm = document.createElement('li');
-      const imgElm = document.createElement('img');
-      imgElm.style.height = imgSize;
-      liElm.style.listStyle = 'none';
-      imgElm.setAttribute('style', 'float: left; width: 400px;height: 300px; object-fit: cover;')
-      imgElm.src = response.message;
-      imgElm.style.height = imgSize;
-      liElm.style.listStyle = 'none';
-      liElm.appendChild(imgElm);
-      ulElm.appendChild(liElm);
+      const li = document.createElement('li');
+      const img = document.createElement('img');
+      
+      li.style.listStyle = 'none';
+      img.setAttribute('style', ' width: 400px;height: 300px; object-fit: cover; margin-top: 15px  ')
+      img.src = response.message;
+      
+      
+      li.appendChild(img);
+      ul.appendChild(li);
     }
   };
 
@@ -52,17 +50,16 @@ function requestWithXHR() {
 
 
 function requestWithAxios(){
-  axios.get(URL)
+  axios.get(url)
   .then(function (response) {
     // handle success
-    const liElm = document.createElement('li');
-    const imgElm = document.createElement('img');
-    imgElm.setAttribute('style', 'float: right; width: 400px;height: 300px; object-fit: cover;')
-    imgElm.src = response.data.message;
-    imgElm.style.height = imgSize;
-    liElm.style.listStyle = 'none';
-    liElm.appendChild(imgElm);
-    ulElm.appendChild(liElm);
+    const li = document.createElement('li');
+    const img = document.createElement('img');
+    img.setAttribute('style', 'width: 400px;height: 300px; object-fit: cover; margin-top: 15px ')
+    img.src = response.data.message;
+    li.style.listStyle = 'none';
+    li.appendChild(img);
+    ul.appendChild(li);
   })
   .catch(function (error) {
     // handle error
@@ -72,3 +69,7 @@ function requestWithAxios(){
     // always executed
   });
 };
+
+
+xmlBtn.addEventListener('click',requestWithXHR);
+axiosBtn.addEventListener('click',requestWithAxios);
