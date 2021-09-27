@@ -1,6 +1,11 @@
+const main = () => {
 //style the body
 document.body.setAttribute('style', 'background-color: #E8F6EF');
-
+//create and styled h1
+const header = document.createElement('h2');
+document.body.appendChild(header);
+header.textContent = 'Click the Button to get the Pokemon list 🤩';
+header.setAttribute('style', 'text-align: center; padding: 20px; color: #334756')
 
 //create and styled div container 
 const container = document.createElement('div');
@@ -23,7 +28,6 @@ const selectList = document.createElement('select');
 const opt = document.createElement('option');
 opt.disabled = true;
 opt.selected = true;
-
 opt.textContent = "Pokemon Name";
 selectList.add(opt, null);
 wrap.appendChild(selectList);
@@ -37,20 +41,28 @@ img.setAttribute('style', 'width: 400px;height: 400px; object-fit: cover; margin
 
 
 const url = 'https://pokeapi.co/api/v2/pokemon/';
+
+//add event listener
+btn.addEventListener('click', () => {
+    fetchAndPopulatePokemon(url, selectList);
+    selectList.addEventListener('change', () => {
+        fetchImage(url+selectList.value, img);
+      });
+    });
+};
+
+
+//fetch data
 async function fetchData(url) {
-    // TODO complete this function
       const response = await fetch(url);
       const data = await response.json();
       return data;
   }
 
+
   async function fetchAndPopulatePokemon(url, selectList) {
-    // TODO complete this function
     try {
       const data = await fetchData(url);
-      /* this is just to make look better before the user select any Pokemon */
-      
-    
       data.results.forEach(({name}) => {
         const pokemonListItem = document.createElement('option');
         pokemonListItem.textContent = name;
@@ -59,22 +71,18 @@ async function fetchData(url) {
     } catch (err) {
       console.log(err.message)
     }
-}
+};
 
+//fetch image
 async function fetchImage(url, img) {
-    // TODO complete this function
     try{
       const data = await fetchData(url);
       img.src = data.sprites.front_default;
     }catch(err){
       console.log(err.message)
     }
-  }
+  };
 
+  window.onload = main;
 
-btn.addEventListener('click', () => {
-    fetchAndPopulatePokemon(url, selectList);
-    selectList.addEventListener('change', () => {
-        fetchImage(url+selectList.value, img);
-      });
-    })
+   
