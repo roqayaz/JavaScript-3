@@ -20,7 +20,7 @@ wrap.setAttribute('style', 'display: flex; justify-content: space-evenly')
 //create and styled button  
 const btn = document.createElement('button');
 btn.textContent = 'Get Pokemon!';
-btn.setAttribute('style', 'background-color: #FFB319; font-size: 2rem; cursor: pointer; padding: 10px; border: solid #FFB319; color: #334756; font-weight: bold; font-family: Times; height: 20%');
+btn.setAttribute('style', 'background-color: #FFB319; font-size: 1.8rem; cursor: pointer; padding: 10px; border: solid #FFB319; color: #334756; font-weight: bold; font-family: Times; height: 20%');
 wrap.appendChild(btn);
 
 //create and styled the select tag
@@ -31,13 +31,13 @@ opt.selected = true;
 opt.textContent = "Pokemon Name";
 selectList.add(opt, null);
 wrap.appendChild(selectList);
-selectList.setAttribute('style', 'background-color: #FFB319; border: solid #FFB319; color: #334756; font-weight: bold; font-family: Times; font-size: 2rem; padding: 10px; height: 20%; cursor: pointer; ');
+selectList.setAttribute('style', 'background-color: #FFB319; border: solid #FFB319; color: #334756; font-weight: bold; font-family: Times; font-size: 1.8rem; padding: 10px; height: 20%; cursor: pointer; ');
 
 //create and styled the img tag
 const img = document.createElement('img');
 img.src = "pokemon.jpg";
 container.appendChild(img);
-img.setAttribute('style', 'width: 400px;height: 400px; object-fit: cover; margin-top: 80px; border: none');
+img.setAttribute('style', 'width: 400px;height: 400px; object-fit: cover; margin-top: 50px; border: none');
 
 
 const url = 'https://pokeapi.co/api/v2/pokemon/';
