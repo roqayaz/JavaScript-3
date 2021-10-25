@@ -72,12 +72,7 @@ h35.textContent = 'Contributors';
 contributors.appendChild(h35);
 
 const footer = document.createElement('footer');
-footer.textContent = `Made with by Roqayaz`;
+footer.innerHTML = 'Made with <span id="heart">❤</span> by Roqayaz';
 document.body.appendChild(footer);
-const heart = document.createElement('span');
-heart.setAttribute('id', 'heart');
-heart.textContent ='❤';
-footer.appendChild(heart);
-
 
 
