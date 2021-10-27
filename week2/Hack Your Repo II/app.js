@@ -158,7 +158,7 @@ h34.appendChild(updated);
   
           profileImg.src = item.avatar_url;
           
-          profileImg.setAttribute('style', 'width: 80px; border-radius: 50px')
+          profileImg.setAttribute('style', 'width: 80px; border-radius: 50px; padding-bottom: 30px');
          
           profileName.textContent = item.login;
           numberOfContribution.textContent = item.contributions;
