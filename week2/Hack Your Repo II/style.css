@@ -18,8 +18,8 @@ body {
     transform: translate(-50%, -50%);
     padding: 10px;
     height: 100%;
-    
     font-family: 'Space Mono', monospace;
+    min-height: calc(100vh - 70px);
    
 }
 
@@ -37,7 +37,7 @@ body {
 
 img {
     width: 20%;
-    border-radius: 50px;
+    
 }
 h1 {
     font-size: 1.2rem;
@@ -67,45 +67,66 @@ h1 {
 }
 
 .details {
-    width: 50%;
+    width: 60%;
     border: #4a707a solid;
     margin-top: 10px;
-    padding-top: 10px;
-    margin-right: 3px;
+    padding-top: 20px;
+    margin-right: 5px;
     padding-left: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     color: #373c46;
     background-color: #f9f8fe;
+    height: 100%;
+    display: none;
 }
 
 span {
-    font-size: 1rem;
+    font-size: .9rem;
 }
 .contributors {
-   width: 50%;
+   width: 40%;
     border: #4a707a solid;
     text-align: center;
     margin-top: 10px;
     padding-top: 10px;
-    margin-left: 3px;
+    margin-left: 5px;
     color: #373c46;
     background-color: #f9f8fe;
+    margin-bottom: 60px;
+    display: none;
 }
 
 
-
+h3 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 footer {
       font-size: 1rem;
       text-align: center;
-      position: absolute;
+      position: fixed;
       bottom: 0;
       width: 100%;
       height: 2.5rem;
       font-family: 'Space Mono', monospace;
-      color: #373c46;
+      color: white;
+      background-color: #4a707a;
+     padding-top: 10px;
+     font-weight: 100;
+
+
       
 }
     
 #heart {
         color: red;
+}
+
+.div2 {
+    display: flex;
+justify-content: space-between;
+padding-left: 30px;
+padding-right: 30px;
+margin-top: 30px;
+margin-bottom: 30px;
 }
