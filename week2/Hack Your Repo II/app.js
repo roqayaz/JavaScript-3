@@ -37,26 +37,24 @@ const details = document.createElement('section');
 details.classList.add('details');
 part.appendChild(details);
 
-
-
 const contributors = document.createElement('section');
 contributors.classList.add('contributors');
 part.appendChild(contributors);
-
-
 
 const footer = document.createElement('footer');
 footer.innerHTML = 'Made with <span id="heart">❤</span> by Roqayaz';
 document.body.appendChild(footer);
 
-fetchRepo(select, details, contributors);
+fetchRepository(select, details, contributors);
 }
 
 window.onload = main;
 
+//fetch select repo
+
 const url = 'https://api.github.com/orgs/HackYourFuture/repos?per_page=100';
 
-function fetchRepo(select, details, contributors) {
+function fetchRepository(select, details, contributors) {
     fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -72,8 +70,8 @@ function fetchRepo(select, details, contributors) {
         showInfo(data, select, details, contributors);
       })
       .catch(error => {
-        const errorEl = document.createElement('h3');
-        errorEl.setAttribute('style', 'background-color: orange; coral: red; display: block; padding = 10px');
+        const errorEl = document.createElement('h4');
+        errorEl.setAttribute('style', 'background-color: #4a707a;width: 400px; height: 100px;padding: 15px;position: absolute;top: 50%;left: 50%;margin: -70px 0 0 -200px; color: white; font-family: "Space Mono", monospace; text-align: center ');
         errorEl.textContent = `network request failed ! "${error.message}"`;
         document.body.appendChild(errorEl);
       });
