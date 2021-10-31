@@ -50,7 +50,7 @@ fetchRepository(select, details, contributors);
 
 window.onload = main;
 
-//fetch select repo
+//fetch repositories via select
 
 const url = 'https://api.github.com/orgs/HackYourFuture/repos?per_page=100';
 
@@ -63,11 +63,9 @@ function fetchRepository(select, details, contributors) {
             select.appendChild(option);
           option.value = item.name;
           option.textContent = item.name;
-          
-  
         })
   
-        showInfo(data, select, details, contributors);
+        showDetails(data, select, details, contributors);
       })
       .catch(error => {
         const errorEl = document.createElement('h4');
@@ -77,7 +75,9 @@ function fetchRepository(select, details, contributors) {
       });
   };
 
-  function showInfo(data, select, details, contributors) {
+  // add details of repositories
+
+  function showDetails(data, select, details, contributors) {
     select.addEventListener('change', () => {
       contributors.innerHTML = '';
       details.innerHTML = '';
@@ -117,14 +117,14 @@ h34.appendChild(updated);
           updated.textContent = item.updated_at;
   
           const url = item.contributors_url;
-          fetchContributor(url, contributors);
+          fetchContributors(url, contributors);
         }
       })
     })
   };
 
-
-  function fetchContributor(url, contributors) {
+// show contributors of repositories
+  function fetchContributors(url, contributors) {
     fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -136,39 +136,34 @@ h34.appendChild(updated);
             
           contributors.style.display = 'block';
           
-          const contItem = document.createElement('div');
-          const div2 = document.createElement('div');
+          const contItems = document.createElement('div');
+          const contDetails = document.createElement('div');
           const profileImg = document.createElement('img');
           const profileName = document.createElement('h4');
           const numberOfContribution = document.createElement('h4');
-          
           numberOfContribution.setAttribute('style', 'background: #4a707a; color: #212121; width: 10%; margin-bottom: 10px; border-radius: 50px')
   
-          contItem.appendChild(profileImg);
-          contItem.appendChild(div2);
-          div2.appendChild(profileName);
-          div2.appendChild(numberOfContribution);
+          contItems.appendChild(profileImg);
+          contItems.appendChild(contDetails);
+          contDetails.appendChild(profileName);
+          contDetails.appendChild(numberOfContribution);
           
-
-          contItem.setAttribute('style', 'background-color: #d4dfe5; margin-left: 20px; margin-right: 20px; padding-top: 20px');
-          contributors.appendChild(contItem);
-         div2.classList.add('div2');
+          contItems.setAttribute('style', 'background-color: #d4dfe5; margin-left: 20px; margin-right: 20px; padding-top: 20px');
+          contributors.appendChild(contItems);
+          contDetails.classList.add('contDetails');
   
           profileImg.src = item.avatar_url;
           
           profileImg.setAttribute('style', 'width: 80px; border-radius: 50px; padding-bottom: 30px');
          
           profileName.textContent = item.login;
-          numberOfContribution.textContent = item.contributions;
-          
-  
-          
+          numberOfContribution.textContent = item.contributions; 
         })
   
       })
       .catch(function (error) {
         const errorEl = document.createElement('h3');
-        errorEl.setAttribute('style', 'background-color: coral; color: white; display: block; padding = 10px');
+        errorEl.setAttribute('style', 'background-color: #4a707a;width: 400px; height: 100px;padding: 15px;position: absolute;top: 50%;left: 50%;margin: -70px 0 0 -200px; color: white; font-family: "Space Mono", monospace; text-align: center ');
         errorEl.textContent = `network request failed ! "${error.message}"`;
         document.body.appendChild(errorEl);
       });

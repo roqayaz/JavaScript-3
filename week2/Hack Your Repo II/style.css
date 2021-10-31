@@ -122,7 +122,7 @@ footer {
         color: red;
 }
 
-.div2 {
+.contDetails {
     display: flex;
 justify-content: space-between;
 padding-left: 30px;
